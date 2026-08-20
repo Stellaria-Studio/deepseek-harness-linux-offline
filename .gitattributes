@@ -1,0 +1,3 @@
+# Preserve upstream license texts byte-for-byte, including their whitespace.
+licenses/DEBIAN-*-COPYRIGHT.txt -whitespace
+licenses/NODEJS-LICENSE.txt -whitespace

@@ -1,0 +1,29 @@
+DeepSeek Harness official repository:
+https://github.com/deepseek-ai/deepseek-harness
+
+@deepseek-ai/dsh npm registry metadata and exact tarball:
+https://registry.npmjs.org/%40deepseek-ai%2Fdsh
+https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-0.1.0-rc.7.tgz
+
+Miniforge 26.3.2-3:
+https://github.com/conda-forge/miniforge/releases/tag/26.3.2-3
+https://github.com/conda-forge/miniforge/releases/download/26.3.2-3/Miniforge3-26.3.2-3-Linux-aarch64.sh
+https://mirrors.tuna.tsinghua.edu.cn/github-release/conda-forge/miniforge/LatestRelease/Miniforge3-Linux-aarch64.sh
+
+Conda channel and mirror:
+https://conda.anaconda.org/conda-forge
+https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+
+Debian archive package pools:
+https://archive.debian.org/debian/pool/main/g/glibc/
+https://archive.debian.org/debian-archive/debian/pool/main/g/gcc-8/
+https://archive.debian.org/debian/pool/main/p/patchelf/
+
+Exact Debian artifacts:
+https://archive.debian.org/debian/pool/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb
+https://archive.debian.org/debian-archive/debian/pool/main/g/gcc-8/libgcc1_8.3.0-6_arm64.deb
+https://archive.debian.org/debian-archive/debian/pool/main/g/gcc-8/libstdc++6_8.3.0-6_arm64.deb
+https://archive.debian.org/debian/pool/main/p/patchelf/patchelf_0.9+52.20180509-1_arm64.deb
+
+Per-package Conda URLs are in conda-sources.tsv.
+Exact npm tarball URLs and SRI integrity values are in dsh-package-lock.json.

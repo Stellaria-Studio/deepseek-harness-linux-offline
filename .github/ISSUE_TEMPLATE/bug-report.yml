@@ -1,0 +1,34 @@
+name: Bug report
+description: Report an installer, runtime, native addon, CLI, or Web UI failure
+title: "[bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Remove API keys, credentials and personal data before posting."
+  - type: input
+    id: release
+    attributes:
+      label: Release tag
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Distribution, architecture, kernel and host glibc
+      placeholder: Kylin 10, aarch64, 4.4.131, glibc 2.23
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Sanitized diagnostic output
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true

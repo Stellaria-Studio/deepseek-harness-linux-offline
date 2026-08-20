@@ -1,0 +1,36 @@
+Audit date: 2026-08-20 Asia/Shanghai
+Tools: macOS file(1), /usr/bin/objdump -p, scripts/audit-elf.sh
+
+Conda environment payload:
+- 45 package archives fully extracted into one prefix.
+- 508 ARM64 ELF files scanned.
+- Maximum external GLIBC requirement: 2.28.
+- Maximum external GLIBCXX requirement: 3.4.32 (libnode.so.127).
+- Bundled libstdc++.so.6.0.35 provides symbols through GLIBCXX_3.4.35.
+- Miniforge bootstrap micromamba was separately extracted: maximum GLIBC requirement 2.17,
+  interpreter /lib/ld-linux-aarch64.so.1, GNU/Linux ABI floor 3.7.0.
+
+Strict-offline npm result:
+- 453 packages selected for linux/arm64/glibc.
+- 9 ELF files scanned: 8 ARM64, 1 unused x86-64 node-pty prebuild.
+- ARM64 maximum GLIBC requirement: 2.28.
+- ARM64 maximum GLIBCXX requirement: 3.4.22.
+- Dynamic: require-builtin addon, pty.node, sharp addon, libvips, Koffi glibc/musl variants.
+- Static: ripgrep and landlock-run helper.
+- Koffi musl variant is present in the platform package but is not selected on a glibc host.
+
+DT_NEEDED closure notes:
+- Node/DSH runtime libraries are supplied by the Conda environment and the private Debian libc tree.
+- Debian libc6 includes NSS files/DNS, resolver and 255 gconv module files.
+- libX11.so.6 is referenced only by optional Conda Tk; Kylin desktop normally supplies it and DSH does not use Tk.
+- libselinux.so.1 is referenced only by the cross sysroot utility usr/bin/makedb, not by Node/DSH.
+- libc.musl-aarch64.so.1 is referenced only by the unused Koffi musl variant.
+
+Full per-file records:
+- metadata/conda-arm64-elf-audit.tsv
+- metadata/npm-arm64-elf-audit.tsv
+
+Execution boundary:
+- Linux ARM64 ELF cannot execute natively on the macOS build host.
+- install.sh performs private-loader dependency resolution, C++17 execution, native addon loads,
+  DSH CLI checks and Node spawn/fork/worker smoke tests on the target before accepting a release.

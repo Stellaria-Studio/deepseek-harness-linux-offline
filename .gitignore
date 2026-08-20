@@ -1,0 +1,16 @@
+# Offline payloads and release artifacts belong in GitHub Releases, not Git.
+Miniforge3-Linux-aarch64.sh
+conda-pkgs/
+npm-cache/
+payload/compat/debs/
+payload/compat/root/
+build/
+dist/
+*.tar.gz
+*.tar.zst
+*.sha256
+SHA256SUMS
+SHA256SUMS.sig
+.DS_Store
+._*
+*.before-path-fix

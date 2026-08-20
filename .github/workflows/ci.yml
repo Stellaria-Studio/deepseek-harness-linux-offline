@@ -1,0 +1,45 @@
+name: Source CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Shell syntax
+        run: |
+          bash -n install.sh diagnose.sh uninstall.sh configure-api-key.sh rollback.sh start-dsh.sh verify.sh scripts/*.sh
+      - name: Lock and SBOM validation
+        run: |
+          node scripts/generate-sbom.mjs
+          node -e 'JSON.parse(require("node:fs").readFileSync("sbom/SBOM.spdx.json", "utf8"))'
+          git diff --exit-code -- sbom/SBOM.spdx.json metadata/dependencies-license-inventory.tsv
+      - name: Repository hygiene
+        run: |
+          test -z "$(find . -type f -size +99M -print)"
+          ! git grep -nE '(^|[^A-Za-z0-9])(sk-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9]{20,})' -- .
+
+  arm64-compat-runtime:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare Debian 10 private runtime
+        run: |
+          mkdir -p payload/compat/debs
+          cp metadata/debian-runtime-sha256s.txt payload/compat/debs/SHA256SUMS
+          bash scripts/prepare-runtime.sh
+      - name: Execute private loader and patchelf
+        run: |
+          compat="$PWD/payload/compat/root"
+          loader="$compat/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1"
+          libs="$compat/lib/aarch64-linux-gnu:$compat/usr/lib/aarch64-linux-gnu"
+          "$loader" --version
+          "$loader" --library-path "$libs" "$compat/usr/bin/patchelf" --version
+          file "$loader" "$compat/usr/bin/patchelf" | grep -q 'ARM aarch64'

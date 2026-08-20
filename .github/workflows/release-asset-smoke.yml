@@ -1,0 +1,48 @@
+name: ARM64 Release Asset Smoke
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to test
+        required: true
+        default: v0.1.0-rc.7-stellaria.1
+
+permissions:
+  contents: read
+
+jobs:
+  offline-install:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ASSET: dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.1.tar.gz
+    steps:
+      - name: Resolve release tag
+        id: release
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == release ]]; then
+            echo 'tag=${{ github.event.release.tag_name }}' >> "$GITHUB_OUTPUT"
+          else
+            echo 'tag=${{ inputs.tag }}' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Download release assets
+        run: |
+          gh release download "${{ steps.release.outputs.tag }}" \
+            --repo "$GITHUB_REPOSITORY" --pattern "$ASSET" --pattern SHA256SUMS
+      - name: Verify and extract
+        run: |
+          sha256sum -c SHA256SUMS
+          tar -xzf "$ASSET"
+      - name: Strict offline install and core smoke
+        run: |
+          root="${ASSET%.tar.gz}"
+          cd "$root"
+          bash scripts/verify-package.sh
+          bash install.sh
+          "$HOME/.local/bin/dsh-diagnose" --core-only
+          "$HOME/.local/bin/dsh" --help >/dev/null
