@@ -12,7 +12,7 @@ jobs:
   source-checks:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Shell syntax
         run: |
           bash -n install.sh diagnose.sh uninstall.sh configure-api-key.sh rollback.sh start-dsh.sh verify.sh scripts/*.sh
@@ -29,7 +29,7 @@ jobs:
   arm64-compat-runtime:
     runs-on: ubuntu-24.04-arm
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Prepare Debian 10 private runtime
         run: |
           mkdir -p payload/compat/debs
