@@ -18,7 +18,7 @@ download() {
 }
 
 download libc6_2.28-10+deb10u4_arm64.deb \
-  https://archive.debian.org/debian/pool/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb \
+  https://archive.debian.org/debian-security/pool/updates/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb \
   299556e1d1bf80617b417c82521f1f0bcb111933c40016fbe8a303b73e6a6a22
 download libgcc1_8.3.0-6_arm64.deb \
   https://archive.debian.org/debian-archive/debian/pool/main/g/gcc-8/libgcc1_8.3.0-6_arm64.deb \

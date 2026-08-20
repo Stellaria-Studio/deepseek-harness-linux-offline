@@ -74,7 +74,7 @@ for (const entry of solve.actions?.FETCH || []) {
 
 const fixed = [
   ['Miniforge', '26.3.2-3', 'BSD-3-Clause', 'https://github.com/conda-forge/miniforge/releases/tag/26.3.2-3', '2c113a69297e612b01ca0f320c22a3107a11f2ab9b573d79ac868a175945ce29'],
-  ['Debian-libc6-arm64', '2.28-10+deb10u4', 'LGPL-2.1-or-later', 'https://archive.debian.org/debian/pool/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb', '299556e1d1bf80617b417c82521f1f0bcb111933c40016fbe8a303b73e6a6a22'],
+  ['Debian-libc6-arm64', '2.28-10+deb10u4', 'LGPL-2.1-or-later', 'https://archive.debian.org/debian-security/pool/updates/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb', '299556e1d1bf80617b417c82521f1f0bcb111933c40016fbe8a303b73e6a6a22'],
   ['Debian-libgcc1-arm64', '8.3.0-6', 'GPL-3.0-or-later WITH GCC-exception-3.1', 'https://archive.debian.org/debian-archive/debian/pool/main/g/gcc-8/libgcc1_8.3.0-6_arm64.deb', '2851ac25d12958586c035de5ec4f2fc17272dec48f776dd0dd24c62f62674fd9'],
   ['Debian-libstdc++6-arm64', '8.3.0-6', 'GPL-3.0-or-later WITH GCC-exception-3.1', 'https://archive.debian.org/debian-archive/debian/pool/main/g/gcc-8/libstdc++6_8.3.0-6_arm64.deb', '52cf36333a405867a079a695f6a37cb63558859d7d19cef40fc7d112c39fefd6'],
   ['Debian-patchelf-arm64', '0.9+52.20180509-1', 'GPL-3.0-or-later', 'https://archive.debian.org/debian/pool/main/p/patchelf/patchelf_0.9+52.20180509-1_arm64.deb', 'a261bd96bdd2f2c9b240589f3319e24a567c604af5c9132e0da970f2cbd6b1ab'],

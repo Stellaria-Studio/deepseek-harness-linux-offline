@@ -553,7 +553,7 @@ conda	make	4.4.1-he30d5cf_3	GPL-3.0-or-later	https://conda.anaconda.org/conda-fo
 conda	libsanitizer	15.3.0-he541324_1	GPL-3.0-only WITH GCC-exception-3.1	https://conda.anaconda.org/conda-forge/linux-aarch64/libsanitizer-15.3.0-he541324_1.conda
 conda	libffi	3.7.0-h376a255_0	MIT	https://conda.anaconda.org/conda-forge/linux-aarch64/libffi-3.7.0-h376a255_0.conda
 binary	Miniforge	26.3.2-3	BSD-3-Clause	https://github.com/conda-forge/miniforge/releases/tag/26.3.2-3
-binary	Debian-libc6-arm64	2.28-10+deb10u4	LGPL-2.1-or-later	https://archive.debian.org/debian/pool/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb
+binary	Debian-libc6-arm64	2.28-10+deb10u4	LGPL-2.1-or-later	https://archive.debian.org/debian-security/pool/updates/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb
 binary	Debian-libgcc1-arm64	8.3.0-6	GPL-3.0-or-later WITH GCC-exception-3.1	https://archive.debian.org/debian-archive/debian/pool/main/g/gcc-8/libgcc1_8.3.0-6_arm64.deb
 binary	Debian-libstdc++6-arm64	8.3.0-6	GPL-3.0-or-later WITH GCC-exception-3.1	https://archive.debian.org/debian-archive/debian/pool/main/g/gcc-8/libstdc++6_8.3.0-6_arm64.deb
 binary	Debian-patchelf-arm64	0.9+52.20180509-1	GPL-3.0-or-later	https://archive.debian.org/debian/pool/main/p/patchelf/patchelf_0.9+52.20180509-1_arm64.deb

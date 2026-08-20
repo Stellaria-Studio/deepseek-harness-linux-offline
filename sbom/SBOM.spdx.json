@@ -12753,7 +12753,7 @@
     {
       "name": "Debian-libc6-arm64",
       "versionInfo": "2.28-10+deb10u4",
-      "downloadLocation": "https://archive.debian.org/debian/pool/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb",
+      "downloadLocation": "https://archive.debian.org/debian-security/pool/updates/main/g/glibc/libc6_2.28-10+deb10u4_arm64.deb",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "LGPL-2.1-or-later",
