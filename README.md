@@ -37,8 +37,8 @@ Download the ARM64 archive and `SHA256SUMS` from the matching pre-release, then:
 
 ```bash
 sha256sum -c SHA256SUMS
-tar -xzf dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.1.tar.gz
-cd dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.1
+tar -xzf dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.2.tar.gz
+cd dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.2
 bash install.sh
 ```
 
@@ -76,7 +76,7 @@ To reproduce a bundle on an online build host with Node 22/npm 10:
 ```bash
 bash scripts/prepare-offline-package.sh
 bash scripts/assemble-release.sh build/dsh-linux-arm64-offline \
-  dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.1
+  dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.2
 ```
 
 ## Verification status

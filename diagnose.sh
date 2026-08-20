@@ -149,7 +149,9 @@ case ":$node_rpath:" in
   *) fail "Node RPATH 未包含当前环境 lib。" ;;
 esac
 say "node_PT_INTERP=$node_interp"
-say "private_glibc=$($loader --version 2>&1 | sed -n '1p')"
+private_glibc="$($strings_cmd "$compat_lib/libc.so.6" | sed -n '/^GNU C Library /p')"
+[[ "$private_glibc" == *"release version 2.28."* ]] || fail "无法确认私有 glibc 2.28：${private_glibc:-not-found}"
+say "private_glibc=$private_glibc"
 "$loader" --library-path "$release/env/lib:$compat_lib:$compat_usr_lib" --list "$node" >/dev/null
 say "private loader dependency resolution=OK"
 

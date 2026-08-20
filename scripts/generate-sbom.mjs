@@ -88,7 +88,7 @@ for (const [name, versionInfo, licenseDeclared, downloadLocation, checksum] of f
 const namespaceHash = crypto.createHash('sha256').update(packages.map(p => `${p.name}@${p.versionInfo}`).join('\n')).digest('hex');
 const document = {
   spdxVersion: 'SPDX-2.3', dataLicense: 'CC0-1.0', SPDXID: 'SPDXRef-DOCUMENT',
-  name: 'deepseek-harness-linux-offline-0.1.0-rc.7-stellaria.1',
+  name: 'deepseek-harness-linux-offline-0.1.0-rc.7-stellaria.2',
   documentNamespace: `https://github.com/Stellaria-Studio/deepseek-harness-linux-offline/sbom/${namespaceHash}`,
   creationInfo: { created: '2026-08-20T00:00:00Z', creators: ['Organization: Stellaria Studio', 'Tool: scripts/generate-sbom.mjs'] },
   packages: packages.map(({ ecosystem, ...pkg }) => pkg),

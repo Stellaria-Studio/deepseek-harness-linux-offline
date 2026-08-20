@@ -28,8 +28,8 @@ AlmaLinux 和 Anolis OS。当前不支持 x86_64、LoongArch、RISC-V、ARM32 �
 
 ```bash
 sha256sum -c SHA256SUMS
-tar -xzf dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.1.tar.gz
-cd dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.1
+tar -xzf dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.2.tar.gz
+cd dsh-linux-arm64-offline-0.1.0-rc.7-stellaria.2
 bash install.sh
 ```
 
