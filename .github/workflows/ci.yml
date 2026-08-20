@@ -40,6 +40,5 @@ jobs:
           compat="$PWD/payload/compat/root"
           loader="$compat/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1"
           libs="$compat/lib/aarch64-linux-gnu:$compat/usr/lib/aarch64-linux-gnu"
-          "$loader" --version
           "$loader" --library-path "$libs" "$compat/usr/bin/patchelf" --version
           file "$loader" "$compat/usr/bin/patchelf" | grep -q 'ARM aarch64'
