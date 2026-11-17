@@ -1,0 +1,36 @@
+name: SEA 2 project knowledge
+on:
+  push:
+    paths: ['.sea/**', 'AGENTS.md', 'tools/sea/**', '.github/workflows/sea-knowledge.yml']
+  pull_request:
+    paths: ['.sea/**', 'AGENTS.md', 'tools/sea/**', '.github/workflows/sea-knowledge.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  knowledge-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate project-owned knowledge without private-core credentials
+        shell: python
+        run: |
+          import json, pathlib, re, subprocess
+          root = pathlib.Path.cwd().resolve()
+          m = json.loads((root / '.sea/project.json').read_text())
+          assert m['schema'] == 'stellaria.sea.project.v2'
+          assert m['runtime']['repository'] == 'Stellaria-Studio/Stellaria-SEA'
+          assert m['tier'] in ['A', 'B', 'C', 'R']
+          assert all(not m['features'].get(k) for k in ['identityBinding', 'approvalWorkflow', 'enforcement', 'automaticPush'])
+          concepts = json.loads((root / m['concepts']).read_text())
+          assert len({c['id'] for c in concepts}) == len(concepts)
+          for c in concepts:
+              assert c['intent'] and c['sources']
+              for s in c['sources']:
+                  p = pathlib.PurePosixPath(s['path'])
+                  assert not p.is_absolute() and '..' not in p.parts and p.parts[0] != '.git'
+                  assert re.fullmatch(r'[a-f0-9]{40,64}', s['commit']) and s['line'] >= 1
+                  subprocess.run(['git', 'cat-file', '-e', s['commit'] + ':' + s['path']], check=True)
+          print(f"SEA 2: {m['id']}, {len(concepts)} concepts; source pointers valid; no product acceptance inferred")

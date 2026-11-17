@@ -1,0 +1,33 @@
+[
+  {
+    "id": "project-architecture",
+    "name": "deepseek-harness-linux-offline architecture",
+    "aliases": [
+      "deepseek-harness-linux-offline",
+      "deepseek-harness-linux-offline",
+      "架构",
+      "职责"
+    ],
+    "intent": "Community-maintained offline installer and compatibility runtime for DeepSeek Harness on ARM64 GNU/Linux, including Kylin, UOS and openEuler.",
+    "qualification": "DECLARED_PROJECT_KNOWLEDGE",
+    "invariants": [
+      "Source and project contracts remain authoritative; declared capabilities need matching execution evidence."
+    ],
+    "implementationPaths": [
+      "scripts"
+    ],
+    "dependsOn": [],
+    "acceptanceGates": [
+      "source identity",
+      "declared validation is not execution evidence"
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "line": 1,
+        "commit": "b402ab5c0dbd3bec3b3392034b2035f9289b5da6"
+      }
+    ],
+    "validation": []
+  }
+]

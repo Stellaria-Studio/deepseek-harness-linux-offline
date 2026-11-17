@@ -1,0 +1,35 @@
+{
+  "schema": "stellaria.sea.project.v2",
+  "id": "Stellaria-Studio/deepseek-harness-linux-offline",
+  "name": "deepseek-harness-linux-offline",
+  "repository": "Stellaria-Studio/deepseek-harness-linux-offline",
+  "defaultBranch": "main",
+  "tier": "C",
+  "profile": "knowledge-runtime",
+  "purpose": "Community-maintained offline installer and compatibility runtime for DeepSeek Harness on ARM64 GNU/Linux, including Kylin, UOS and openEuler.",
+  "visibility": "public",
+  "concepts": ".sea/concepts.json",
+  "invariants": [
+    "Source and project contracts remain authoritative; declared capabilities need matching execution evidence."
+  ],
+  "runtime": {
+    "repository": "Stellaria-Studio/Stellaria-SEA",
+    "version": "2.0.0",
+    "protocol": 2,
+    "sourceCommit": "6207b585ffabb8d182432bb3a03ba4d0a5279aa6"
+  },
+  "legacy": {
+    "definition": "tools/sea/project.json",
+    "history": "read-only; preserve original bytes"
+  },
+  "features": {
+    "contextBroker": true,
+    "architectureRegistry": true,
+    "localTaskCapsules": true,
+    "identityBinding": false,
+    "approvalWorkflow": false,
+    "enforcement": false,
+    "automaticPush": false
+  },
+  "sourceBaseline": "b402ab5c0dbd3bec3b3392034b2035f9289b5da6"
+}

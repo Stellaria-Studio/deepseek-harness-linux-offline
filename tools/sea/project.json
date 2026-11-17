@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "name": "deepseek-harness-linux-offline",
+  "components": {
+    "project": {
+      "description": "Community-maintained offline installer and compatibility runtime for DeepSeek Harness on ARM64 GNU/Linux, including Kylin, UOS and openEuler.",
+      "paths": [
+        "scripts"
+      ],
+      "approved": [
+        "README.md"
+      ],
+      "required_files": [
+        "README.md"
+      ],
+      "build_targets": [],
+      "validation": [],
+      "pitfalls": [
+        "Source and project contracts remain authoritative; declared capabilities need matching execution evidence."
+      ],
+      "evidence": []
+    }
+  },
+  "build_metadata": []
+}
