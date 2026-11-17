@@ -27,11 +27,27 @@ remain explicit. Concepts are repository declarations, never automatic approval.
 
 Legacy `tools/sea/project.json`, rounds, archives and Git event history retain
 their original bytes. `sea_knowledge` and `sea_round_close` remain available in
-the shared runtime. SEA 2 tasks default to external local SQLite/WAL state and
-CAS revisions. Local conflict hints are not team-wide locks; hashed receipts
-are not independent visual/product acceptance. No transcript is collected.
+the shared runtime. SEA 2.1 shares tasks on the engineering mainline under `.sea/tasks/` and
+`.sea/task-events/`; SQLite/WAL retains local drafts and cache. Task submission
+captures Git name/email, and committed progress resolves the actual Git
+committer. Include listed task files with the normal authorized code commit;
+SEA never stages/pushes code or creates a task branch. Visible overlaps are
+advisory; unpushed work is unknown. Hashed receipts are not independent acceptance. No transcript is collected.
 
 The lightweight CI validates the local contract and pinned source pointers
 without private-core credentials. It does not execute product commands, deploy
 services or change branch protections. Uninstalling SEA leaves product builds
 and historical knowledge available.
+
+## Mainline task workflow
+
+```sh
+python3 tools/sea/stellaria-sea/scripts/sea.py task submit --payload /outside/project/plan.json
+python3 tools/sea/stellaria-sea/scripts/sea.py task board
+python3 tools/sea/stellaria-sea/scripts/sea.py task goal_diff --task-id SEA-ID
+python3 tools/sea/stellaria-sea/scripts/sea.py board --output /outside/project/board.html
+```
+
+Use the normal engineering commit/push to synchronize code and task progress.
+Do not create a second task branch or force changes over a newer task revision.
+No account binding or confirmation service is required.

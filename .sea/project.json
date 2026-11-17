@@ -14,9 +14,9 @@
   ],
   "runtime": {
     "repository": "Stellaria-Studio/Stellaria-SEA",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "protocol": 2,
-    "sourceCommit": "6207b585ffabb8d182432bb3a03ba4d0a5279aa6"
+    "sourceCommit": "1f50b0d9c0921df7fbd50786917eb51dc2fad887"
   },
   "legacy": {
     "definition": "tools/sea/project.json",
@@ -29,7 +29,15 @@
     "identityBinding": false,
     "approvalWorkflow": false,
     "enforcement": false,
-    "automaticPush": false
+    "automaticPush": false,
+    "projectTaskBoard": true
   },
-  "sourceBaseline": "b402ab5c0dbd3bec3b3392034b2035f9289b5da6"
+  "sourceBaseline": "b402ab5c0dbd3bec3b3392034b2035f9289b5da6",
+  "taskBoard": {
+    "mode": "engineering-mainline",
+    "directory": ".sea/tasks",
+    "events": ".sea/task-events",
+    "remote": "origin",
+    "branch": "main"
+  }
 }

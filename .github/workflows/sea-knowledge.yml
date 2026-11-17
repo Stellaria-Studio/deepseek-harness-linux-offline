@@ -34,3 +34,26 @@ jobs:
                   assert re.fullmatch(r'[a-f0-9]{40,64}', s['commit']) and s['line'] >= 1
                   subprocess.run(['git', 'cat-file', '-e', s['commit'] + ':' + s['path']], check=True)
           print(f"SEA 2: {m['id']}, {len(concepts)} concepts; source pointers valid; no product acceptance inferred")
+
+          # Task files travel with the engineering mainline; no private core token.
+          import hashlib
+          canonical = lambda x: json.dumps(x, ensure_ascii=False, separators=(',', ':'), sort_keys=True)
+          fields = ['objective', 'requirements', 'concepts', 'components', 'paths', 'interfaces', 'dependsOn']
+          for path in (root / '.sea/tasks').glob('*.json'):
+              record = json.loads(path.read_text())
+              task = record['task']
+              assert record['schema'] == 'stellaria.sea.shared-task.v1' and record['project'] == m['id']
+              assert re.fullmatch(r'[A-Za-z0-9_.-]{1,100}', task['id']) and path.stem == task['id']
+              assert task.get('independentAcceptance') is not True
+              assert task['open'] == [r for r in task['requirements'] if r not in task['completed']]
+              goal = hashlib.sha256(canonical({k: task.get(k, []) for k in fields}).encode()).hexdigest()
+              assert task['goalDigest'] == goal
+              assert re.fullmatch(r'[a-f0-9]{64}', record['lastEvent'])
+              event = json.loads((root / '.sea/task-events' / (record['lastEvent'] + '.json')).read_text())
+              assert event['id'] == record['lastEvent'] and event['task'] == task
+              assert event['revision'] == record['revision'] and event['baseRevision'] == record['revision'] - 1
+              assert event['id'] == hashlib.sha256(canonical({k: v for k, v in event.items() if k != 'id'}).encode()).hexdigest()
+              if event.get('previousEvent'):
+                  assert re.fullmatch(r'[a-f0-9]{64}', event['previousEvent'])
+                  previous = json.loads((root / '.sea/task-events' / (event['previousEvent'] + '.json')).read_text())
+                  assert previous['task']['goalDigest'] == goal and previous['revision'] == event['baseRevision']
