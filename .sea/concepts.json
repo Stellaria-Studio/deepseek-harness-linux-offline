@@ -14,7 +14,14 @@
       "Source and project contracts remain authoritative; declared capabilities need matching execution evidence."
     ],
     "implementationPaths": [
-      "scripts"
+      "scripts",
+      "configure-api-key.sh",
+      "diagnose.sh",
+      "install.sh",
+      "rollback.sh",
+      "start-dsh.sh",
+      "uninstall.sh",
+      "verify.sh"
     ],
     "dependsOn": [],
     "acceptanceGates": [
