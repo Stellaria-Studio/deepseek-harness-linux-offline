@@ -14,9 +14,9 @@
   ],
   "runtime": {
     "repository": "Stellaria-Studio/Stellaria-SEA",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "protocol": 2,
-    "sourceCommit": "1f50b0d9c0921df7fbd50786917eb51dc2fad887"
+    "sourceCommit": "35890a0d0d28022f06a8b03611495a9160437549"
   },
   "legacy": {
     "definition": "tools/sea/project.json",
@@ -39,5 +39,6 @@
     "events": ".sea/task-events",
     "remote": "origin",
     "branch": "main"
-  }
+  },
+  "guidance": ".sea/guide.json"
 }

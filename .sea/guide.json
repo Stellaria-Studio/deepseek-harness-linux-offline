@@ -1,0 +1,65 @@
+{
+  "schema": "stellaria.sea.guide.v1",
+  "project": "Stellaria-Studio/deepseek-harness-linux-offline",
+  "revision": 1,
+  "requirements": [
+    {
+      "id": "project-authority",
+      "level": "SHOULD",
+      "rule": "Community-maintained offline installer and compatibility runtime for DeepSeek Harness on ARM64 GNU/Linux, including Kylin, UOS and openEuler.",
+      "source": {
+        "path": "README.md",
+        "line": 1,
+        "commit": "6eba70285bae4bbfbea2793c53d59a19ba697ad1"
+      },
+      "keywords": [],
+      "paths": [],
+      "always": true
+    }
+  ],
+  "lessons": [],
+  "cleanup": {
+    "keep": [
+      "工程源码、未提交工作、项目原件及在用依赖。保留当前可用版本、已核实的关键回滚版本及其实际加载依赖。",
+      "保留可复现的失败原因、代表证据、环境和来源记录。重复输出须在成片或替代产物核验后再清理。",
+      "保留项目清单、原配置、重要发布或研究基线、来源/验收信息及其可复现依赖。"
+    ],
+    "review": [
+      "先核对精确路径、归属、打开句柄和引用关系。未知路径保持待核对。",
+      "忽略规则、旧日期、大体积和目录名都不能证明可删除。清理后复验工程并记录磁盘余量。",
+      "具体目录候选由项目维护者确认可重建性或从最近清理记录取得。"
+    ],
+    "disposable": [
+      ".DS_Store",
+      "*/.DS_Store",
+      "__pycache__/*.pyc",
+      "*/__pycache__/*.pyc"
+    ],
+    "protect": [
+      ".sea/*",
+      "*.blend",
+      "*.blend1",
+      "*.drp",
+      "*.sqlite",
+      "*.sqlite-wal",
+      "*.sqlite-shm",
+      "*.db",
+      "*.db-wal",
+      "*.db-shm",
+      "*.dylib",
+      "*.qcow2",
+      "*.gguf",
+      "*.safetensors",
+      "Content/Native/*",
+      "*/Content/Native/*",
+      "weights/*",
+      "*/weights/*",
+      "checkpoints/*",
+      "*/checkpoints/*",
+      "node_modules/*",
+      "*/node_modules/*",
+      ".venv/*",
+      "*/.venv/*"
+    ]
+  }
+}

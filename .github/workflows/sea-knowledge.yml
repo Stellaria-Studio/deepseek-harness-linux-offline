@@ -57,3 +57,20 @@ jobs:
                   assert re.fullmatch(r'[a-f0-9]{64}', event['previousEvent'])
                   previous = json.loads((root / '.sea/task-events' / (event['previousEvent'] + '.json')).read_text())
                   assert previous['task']['goalDigest'] == goal and previous['revision'] == event['baseRevision']
+
+          guide_path = root / '.sea/guide.json'
+          if guide_path.is_file():
+              guide = json.loads(guide_path.read_text(encoding='utf-8'))
+              assert guide['schema'] == 'stellaria.sea.guide.v1' and guide['project'] == m['id']
+              assert isinstance(guide['revision'], int) and guide['revision'] >= 1
+              rows = guide['requirements'] + guide['lessons']
+              assert len({row['id'] for row in rows}) == len(rows)
+              for row in rows:
+                  ref = row['source']
+                  path = pathlib.PurePosixPath(ref['path'])
+                  assert not path.is_absolute() and '..' not in path.parts
+                  assert re.fullmatch(r'[a-f0-9]{40,64}', ref['commit']) and ref['line'] >= 1
+                  assert subprocess.check_output(['git', 'ls-tree', ref['commit'], '--', ref['path']])
+              for kind in ('protect', 'disposable'):
+                  for pattern in guide['cleanup'].get(kind, []):
+                      assert not pattern.startswith(('/', '-')) and '..' not in pattern.split('/')
